@@ -21,12 +21,15 @@ class Student
 
   def self.drop_table
     sql = <<-SQL
-    DROP TABLE IF EXISTS students;
+      DROP TABLE IF EXISTS students;
       SQL
       DB[:conn].execute(sql)
   end
 
   def save
+    sql = <<-SQL
+      INSERT INTO students (name, grade) VALUES (?, ?);
+      SQL
   end
 
 end
